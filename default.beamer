@@ -192,7 +192,11 @@ $header-includes$
 $endfor$
 
 $if(title)$
+$if(shorttitle)$
+\title[$shorttitle$]{$title$}
+$else$
 \title{$title$}
+$endif$
 $endif$
 $if(subtitle)$
 \subtitle{$subtitle$}
@@ -200,7 +204,11 @@ $endif$
 $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
 $endif$
+$if(date)$
 \date{$date$}
+$else$
+\date{\today}
+$endif$
 
 \begin{document}
 $if(title)$
@@ -212,7 +220,7 @@ $include-before$
 
 $endfor$
 $if(toc)$
-\begin{frame}
+\begin{frame}{Outline}
 \tableofcontents[hideallsubsections]
 \end{frame}
 
