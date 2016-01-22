@@ -139,12 +139,10 @@ $if(section-titles)$
   \frame{\partpage}
 }
 \AtBeginSection{
-  \ifbibliography
-  \else
-    \let\insertsectionnumber\relax
-    \let\sectionname\relax
-    \frame{\sectionpage}
-  \fi
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,hideothersubsections]
+  \end{frame}
 }
 \AtBeginSubsection{
   \let\insertsubsectionnumber\relax
