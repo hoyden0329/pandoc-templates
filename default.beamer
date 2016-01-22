@@ -2,7 +2,8 @@
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
-\beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$
+\beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$ 
+\setbeamertemplate{footline}[frame number]
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -129,7 +130,7 @@ $if(graphics)$
 $endif$
 
 % Prevent slide breaks in the middle of a paragraph:
-\widowpenalties 1 10000
+\widowpenalties 1 9999
 \raggedbottom
 
 $if(section-titles)$
@@ -138,17 +139,17 @@ $if(section-titles)$
   \let\partname\relax
   \frame{\partpage}
 }
-\AtBeginSection{
+\AtBeginSection[]{
   \begin{frame}<beamer>
     \frametitle{Outline}
-    \tableofcontents[currentsection,hideothersubsections]
+    \tableofcontents[currentsection,hideothersubsections,sectionstyle=show/shaded, subsectionstyle=show]
   \end{frame}
 }
-\AtBeginSubsection{
-  \let\insertsubsectionnumber\relax
-  \let\subsectionname\relax
-  \frame{\subsectionpage}
-}
+%\AtBeginSubsection{
+%  \let\insertsubsectionnumber\relax
+%  \let\subsectionname\relax
+%  \frame{\subsectionpage}
+%}
 $endif$
 
 $if(links-as-notes)$
