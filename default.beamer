@@ -1,9 +1,10 @@
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
+\documentclass[table,$if(fontsize)$$fontsize$,$endif$$if(lang)$$babel-lang$,$endif$$if(handout)$handout,$endif$$if(beamer)$ignorenonframetext,$endif$$for(classoption)$$classoption$$sep$,$endfor$]{$documentclass$}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbols$if(navigation)$$navigation$$else$empty$endif$ 
 \setbeamertemplate{footline}[frame number]
+\usepackage{xcolor}
 $if(fontfamily)$
 \usepackage[$for(fontfamilyoptions)$$fontfamilyoptions$$sep$,$endfor$]{$fontfamily$}
 $else$
@@ -110,7 +111,7 @@ $if(verbatim-in-note)$
 \VerbatimFootnotes % allows verbatim text in footnotes
 $endif$
 $if(tables)$
-\usepackage{longtable,booktabs}
+\usepackage{longtable,booktabs,tabu}
 \usepackage{caption}
 % These lines are needed to make table captions work with longtable:
 \makeatletter
@@ -142,7 +143,7 @@ $if(section-titles)$
 \AtBeginSection[]{
   \begin{frame}<beamer>
     \frametitle{Outline}
-    \tableofcontents[currentsection,hideothersubsections,sectionstyle=show/shaded, subsectionstyle=show]
+    \tableofcontents[currentsection,currentsubsection,sectionstyle=show/shaded, subsectionstyle=show/show/hide]
   \end{frame}
 }
 %\AtBeginSubsection{
@@ -202,6 +203,9 @@ $if(subtitle)$
 $endif$
 $if(author)$
 \author{$for(author)$$author$$sep$ \and $endfor$}
+$endif$
+$if(institute)$
+\institute[]{$for(institute)$$institute$$sep$ \and $endfor$}
 $endif$
 $if(date)$
 \date{$date$}
